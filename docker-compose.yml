@@ -1,0 +1,15 @@
+postgres:
+  build: postgres
+  environment:
+    POSTGRES_DB: adv_demo
+    POSTGRES_USER: adv_user
+    POSTGRES_PASSWORD: adv_pass
+    POSTGRES_INITDB_ARGS: "--encoding=UTF-8 --locale=C"
+  ports:
+    - "5432:5432"
+  volumes:
+    - ./postgres/data:/var/lib/postgresql/data
+    - ./postgres/work:/docker-entrypoint-initdb.d/
+    - ./postgres/tmp:/opt/postgres
+  container_name: adv_pgsql
+
